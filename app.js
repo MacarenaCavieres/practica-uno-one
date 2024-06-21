@@ -1,8 +1,9 @@
-const secretNumb = Math.floor(Math.random() * 10 + 1);
-let userNumb = +prompt("Elija un número del 1 al 10");
+const maxPlay = +prompt("Hasta que numero quiere jugar?");
+const secretNumb = Math.floor(Math.random() * maxPlay + 1);
+let userNumb = +prompt(`Elija un número del 1 al ${maxPlay}`);
 
-let contador = 1;
-let palabraVez = "intento";
+let count = 1;
+let word = "intento";
 
 while (userNumb !== secretNumb) {
     if (secretNumb > userNumb) {
@@ -10,20 +11,12 @@ while (userNumb !== secretNumb) {
     } else {
         alert("Skynet eligio un número menor");
     }
+    if (count >= 3) {
+        alert("Maximo de intentos alcanzado");
+        break;
+    }
     userNumb = +prompt("Elija un número del 1 al 10");
-    contador++;
-    palabraVez = "intentos";
+    count++;
+    word = "intentos";
 }
-
-alert("Te tomo " + contador + palabraVez + "  acertar");
-
-// const day = prompt("Que dia de semana es?").toLowerCase();
-
-// if (day === "sabado" || day === "domingo") {
-//     alert("Buen fin de semana");
-// } else {
-//     alert("Buena semana");
-// }
-
-// const nameUser = prompt("Escribe tu nombre");
-// alert(`Bienvenid@ ${nameUser}`);
+if (userNumb === secretNumb) alert("Te tomo " + count + " " + word + " acertar");
